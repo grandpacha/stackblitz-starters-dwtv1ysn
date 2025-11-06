@@ -1,0 +1,144 @@
+# Style Mapping Configuration
+#
+# This file documents common style mappings between Word and InDesign.
+# Use this as a reference when setting up your InDesign template.
+#
+# Format: Word Style Name -> InDesign Style Name(s)
+
+## PARAGRAPH STYLES
+
+# Headings
+Heading 1 -> Heading 1, H1, Title, Header 1
+Heading 2 -> Heading 2, H2, Subtitle, Header 2
+Heading 3 -> Heading 3, H3, Subhead, Header 3
+Heading 4 -> Heading 4, H4, Header 4
+Heading 5 -> Heading 5, H5, Header 5
+Heading 6 -> Heading 6, H6, Header 6
+
+# Body Text
+Normal -> Body Text, Body, Paragraph, Text
+Body Text -> Body Text, Body, Paragraph
+First Paragraph -> First Para, Intro, Lead
+
+# Lists
+List Paragraph -> List, Bullet List, Bulleted
+List Number -> Numbered List, Number List
+List Continue -> List Continuation
+
+# Special Paragraphs
+Quote -> Quotation, Blockquote, Pull Quote, Citation
+Caption -> Caption, Figure Caption, Image Caption, Table Caption
+Footnote Text -> Footnote, Note
+Endnote Text -> Endnote
+Sidebar -> Sidebar, Box Text, Callout
+
+# Code and Technical
+Code -> Code Block, Monospace, Programming
+Preformatted -> Preformat, Raw Text
+
+## CHARACTER STYLES
+
+# Emphasis
+Strong -> Bold, Emphasis Bold, Heavy
+Emphasis -> Italic, Emphasis Italic
+Underline -> Underline
+
+# Special Formatting
+Hyperlink -> Link, URL, Hyperlink
+Code Inline -> Code, Inline Code, Monospace
+Superscript -> Super, Superscript
+Subscript -> Sub, Subscript
+
+# Semantic Styles
+Important -> Alert, Important, Warning
+Note -> Note, Annotation
+Reference -> Ref, Citation, Reference
+
+## CUSTOM MAPPINGS
+
+# Add your own custom style mappings here:
+#
+# My Custom Word Style -> My InDesign Style
+# Another Word Style -> InDesign Style 1, InDesign Style Alternative
+
+## TIPS FOR STYLE NAMING
+
+1. Be Consistent
+   - Use the same naming convention across all documents
+   - Prefer Title Case (e.g., "Body Text" not "body text")
+
+2. Match Common Names
+   - Use standard style names when possible
+   - This helps automatic mapping work better
+
+3. Avoid Special Characters
+   - Don't use: @, #, $, %, &, *, etc.
+   - Spaces and numbers are OK
+
+4. Be Descriptive
+   - "Pull Quote" is better than "PQ"
+   - "Caption Bold" is better than "CB"
+
+5. Create a Style Guide
+   - Document your style names
+   - Share with your team
+   - Keep it updated
+
+## INDESIGN TEMPLATE CHECKLIST
+
+Essential paragraph styles to create in your template:
+
+[ ] Body Text / Normal
+[ ] Heading 1
+[ ] Heading 2
+[ ] Heading 3
+[ ] Heading 4
+[ ] Subhead
+[ ] Quote / Blockquote
+[ ] Caption
+[ ] List / Bullet
+[ ] Numbered List
+[ ] Footnote
+[ ] First Paragraph
+
+Essential character styles to create:
+
+[ ] Bold
+[ ] Italic
+[ ] Bold Italic
+[ ] Hyperlink
+[ ] Code / Monospace
+[ ] Superscript
+[ ] Subscript
+
+## WORKFLOW RECOMMENDATIONS
+
+Before Importing from Word:
+1. Clean up Word document formatting
+2. Apply consistent styles in Word
+3. Remove manual overrides (use styles instead)
+4. Check for style name consistency
+
+After Importing to InDesign:
+1. Review style applications
+2. Adjust any mis-mapped styles
+3. Check pagination and flow
+4. Verify colors and fonts
+5. Place images manually if needed
+
+## ADVANCED: MODIFYING THE SCRIPT
+
+To add permanent custom mappings to the script:
+
+1. Open WordToInDesignFormatter.jsx
+2. Find the 'commonMappings' object (around line 366)
+3. Add your mappings in this format:
+   'wordstylename': ['indesign style 1', 'indesign style 2'],
+4. Save and restart InDesign
+
+Example:
+var commonMappings = {
+    'heading1': ['heading 1', 'h1', 'title'],
+    'mycompanyheader': ['company header', 'brand header'],
+    'productname': ['product', 'brand name'],
+};

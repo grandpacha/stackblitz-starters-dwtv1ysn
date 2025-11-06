@@ -5,8 +5,9 @@
  * character and paragraph styles from an InDesign template.
  *
  * Author: Claude AI
- * Version: 1.0
+ * Version: 1.1
  * Date: 2025-11-06
+ * Compatibility: InDesign CC 2015-2026
  *
  * Usage:
  * 1. Open your InDesign template document (or have it open)
@@ -136,7 +137,7 @@ function createDocumentFromTemplate(templateDoc) {
     docPreset.right = templateDoc.marginPreferences.right;
 
     // Create new document
-    var newDoc = app.documents.add(docPreset);
+    var newDoc = app.documents.add(true, docPreset);
 
     // Remove the preset (cleanup)
     docPreset.remove();

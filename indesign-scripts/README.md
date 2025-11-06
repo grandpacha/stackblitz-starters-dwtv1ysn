@@ -201,7 +201,7 @@ The script copies color swatches from the template, ensuring:
 
 ## Compatibility
 
-- **Adobe InDesign**: CC 2015 and later (tested up to 2024)
+- **Adobe InDesign**: CC 2015 and later (tested up to 2026)
 - **Word Formats**: .doc, .docx, .rtf
 - **Operating Systems**: macOS and Windows
 
@@ -222,6 +222,11 @@ The script copies color swatches from the template, ensuring:
 - **Forms**: Form fields and controls are not supported
 
 ## Version History
+
+- **v1.1** (2025-11-06): InDesign 2026 compatibility fix
+  - Fixed document creation method for InDesign 2026
+  - Updated API call for app.documents.add()
+  - Verified compatibility with InDesign CC 2015-2026
 
 - **v1.0** (2025-11-06): Initial release
   - Word document import

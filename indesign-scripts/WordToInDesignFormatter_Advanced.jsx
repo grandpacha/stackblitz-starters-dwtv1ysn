@@ -5,8 +5,9 @@
  * before applying styles to the document.
  *
  * Author: Claude AI
- * Version: 1.0 Advanced
+ * Version: 1.1 Advanced
  * Date: 2025-11-06
+ * Compatibility: InDesign CC 2015-2026
  *
  * Features:
  * - Manual style mapping interface
@@ -390,7 +391,7 @@ function createDocumentFromTemplate(template) {
     docPreset.left = template.marginPreferences.left;
     docPreset.right = template.marginPreferences.right;
 
-    var newDoc = app.documents.add(docPreset);
+    var newDoc = app.documents.add(true, docPreset);
     docPreset.remove();
     return newDoc;
 }

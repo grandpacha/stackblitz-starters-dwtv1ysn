@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const links = [
@@ -41,8 +42,8 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-[72px]">
-          <Link href="/" className="text-xl font-bold tracking-tight">
-            Chart+Foster
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.svg" alt="Chart+Foster" width={180} height={22} priority />
           </Link>
 
           {/* Desktop links */}

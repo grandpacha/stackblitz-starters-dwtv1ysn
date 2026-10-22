@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -31,8 +32,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-border">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="text-2xl font-bold tracking-tight">
-              Chart+Foster
+            <Link href="/" className="inline-block">
+              <Image src="/logo.svg" alt="Chart+Foster" width={220} height={27} />
             </Link>
             <p className="text-muted text-sm mt-4 leading-relaxed max-w-xs">
               A brand and business strategy firm helping ambitious companies craft iconic, unforgettable brand experiences.

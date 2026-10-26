@@ -5,6 +5,8 @@ import ScrollAnimation from './components/ScrollAnimation';
 import CounterAnimation from './components/CounterAnimation';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
+import TelemetryGauges from './components/infographics/TelemetryGauges';
+import GrowthModeler from './components/infographics/GrowthModeler';
 import Link from 'next/link';
 import { projects, awards, blogPosts } from './data';
 
@@ -159,6 +161,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <TelemetryGauges />
 
       {/* ─── Section 4: Projects Preview ─── */}
       <section className="py-section border-t border-border">
@@ -356,6 +360,8 @@ export default function Home() {
           </ScrollAnimation>
         </div>
       </section>
+
+      <GrowthModeler />
 
       {/* ─── Section 9: Testimonials Carousel ─── */}
       <div className="border-t border-border">

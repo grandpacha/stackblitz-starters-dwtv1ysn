@@ -16,9 +16,13 @@ const config: Config = {
         'border-light': '#333333',
         muted: '#999999',
         cream: '#F5F0EB',
+        gold: '#F4B223',
+        aqua: '#2DD4BF',
+        steel: '#6B7280',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace'],
       },
       fontSize: {
         'display': ['clamp(2.25rem, 5vw, 5rem)', { lineHeight: '1.05', fontWeight: '800' }],

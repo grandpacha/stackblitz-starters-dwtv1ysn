@@ -4,6 +4,9 @@ import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import LifecycleWheel from '../components/infographics/LifecycleWheel';
+import FrictionBenchmark from '../components/infographics/FrictionBenchmark';
+import LadderingHurdles from '../components/infographics/LadderingHurdles';
 import Link from 'next/link';
 import { projects } from '../data';
 
@@ -142,6 +145,10 @@ export default function ExpertisePage() {
           ))}
         </div>
       </section>
+
+      <LifecycleWheel />
+      <FrictionBenchmark />
+      <LadderingHurdles />
 
       {/* Section 3 — Full-Width Parallax Image */}
       <section className="py-section">

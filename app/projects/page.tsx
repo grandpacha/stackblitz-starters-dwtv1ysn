@@ -5,6 +5,8 @@ import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import Streamgraph from '../components/infographics/Streamgraph';
+import CommitmentArcs from '../components/infographics/CommitmentArcs';
 import { projects } from '../data';
 
 export default function ProjectsPage() {
@@ -126,6 +128,9 @@ export default function ProjectsPage() {
           </ScrollAnimation>
         </div>
       </section>
+
+      <Streamgraph />
+      <CommitmentArcs />
 
       {/* Testimonials */}
       <Testimonials />

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -153,4 +153,42 @@ select {
 .testimonial-slide.active {
   opacity: 1;
   position: relative;
+}
+
+/* Range sliders (override global input styling) */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  height: 6px;
+  border-radius: 9999px;
+  background: #222222;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 3px solid #0A0A0A;
+  box-shadow: 0 0 0 1px #333333;
+}
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 3px solid #0A0A0A;
+}
+
+/* Radar beacon pulse for map hubs */
+@keyframes radarWave {
+  0% { r: 4px; opacity: 0.9; }
+  70% { r: 18px; opacity: 0; }
+  100% { r: 4px; opacity: 0; }
+}
+.radar-pulse {
+  animation: radarWave 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }

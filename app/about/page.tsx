@@ -7,6 +7,8 @@ import ScrollAnimation from '../components/ScrollAnimation';
 import CounterAnimation from '../components/CounterAnimation';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
+import HorseshoeGauge from '../components/infographics/HorseshoeGauge';
+import WorldMap from '../components/infographics/WorldMap';
 import { teamMembers, awards } from '../data';
 
 const tabs = ['Branding', 'Mobile Apps', 'Social Media', 'Web Development'];
@@ -165,6 +167,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <HorseshoeGauge />
+
       {/* Section 5 — Awards */}
       <section className="py-section border-t border-border">
         <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
@@ -198,6 +202,8 @@ export default function AboutPage() {
           </ScrollAnimation>
         </div>
       </section>
+
+      <WorldMap />
 
       {/* Section 6 — Team */}
       <section className="py-section border-t border-border">

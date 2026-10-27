@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
+import PageHeader from '../components/PageHeader';
 import FAQ from '../components/FAQ';
 import { blogPosts } from '../data';
 
@@ -12,24 +13,11 @@ export default function BlogPage() {
 
   return (
     <main>
-      {/* Page Header */}
-      <section className="pt-32 pb-section">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <SectionLabel text="Blog" />
-          </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <h2 className="text-h2 mt-4 max-w-3xl">
-              Insights, ideas, and inspiration for bold brands.
-            </h2>
-          </ScrollAnimation>
-          <ScrollAnimation delay={200}>
-            <p className="text-muted mt-4 max-w-xl text-lg leading-relaxed">
-              Perspectives on branding, design, and strategy from the Chart+Foster team.
-            </p>
-          </ScrollAnimation>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Journal"
+        title={<>Insights for brands <span className="text-muted">with ambition.</span></>}
+        lead="Perspectives on brand, positioning and growth from the Chart+Foster team."
+      />
 
       {/* Featured Post */}
       <section className="py-section border-t border-border">

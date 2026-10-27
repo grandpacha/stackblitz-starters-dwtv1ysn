@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
+import PageHeader from '../components/PageHeader';
 import CounterAnimation from '../components/CounterAnimation';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
@@ -50,36 +51,27 @@ export default function AboutPage() {
   return (
     <div className="bg-primary text-white min-h-screen">
 
-      {/* Section 1 — Page Header */}
-      <section className="pt-32 pb-section">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <SectionLabel text="About" />
-          </ScrollAnimation>
-
-          <ScrollAnimation delay={100}>
-            <h1 className="text-h1 mt-6 max-w-5xl">
-              We partner with bold founders and ambitious teams to build brands that define categories and shape culture.
-            </h1>
-          </ScrollAnimation>
-
-          <ScrollAnimation delay={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-border pt-12">
-              {[
-                { number: '80', label: 'Brains' },
-                { number: '11', label: 'Languages' },
-                { number: '17', label: 'Nationalities' },
-                { number: '10', label: 'Time Zones' },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-h2">{stat.number}</p>
-                  <p className="text-muted mt-1">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="About"
+        title={<>We partner with founders and leadership teams to build brands that <span className="text-muted">define their category.</span></>}
+        lead="Chart+Foster is a brand and business strategy firm. For two decades we have helped established companies clarify what they stand for and turn it into growth."
+      >
+        <ScrollAnimation>
+          <div className="mt-16 cell-grid grid-cols-2 md:grid-cols-4">
+            {[
+              { number: '80', label: 'Strategists & designers' },
+              { number: '11', label: 'Languages' },
+              { number: '17', label: 'Nationalities' },
+              { number: '10', label: 'Time zones' },
+            ].map((stat) => (
+              <div key={stat.label} className="p-6 md:p-8 min-h-[11rem] flex flex-col justify-between">
+                <p className="mono-label">{stat.label}</p>
+                <p className="text-stat">{stat.number}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollAnimation>
+      </PageHeader>
 
       {/* Section 2 — Expertise Tabs */}
       <section className="py-section border-t border-border">

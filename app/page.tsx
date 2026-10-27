@@ -1,218 +1,239 @@
 'use client';
 
-import SectionLabel from './components/SectionLabel';
+import Link from 'next/link';
 import ScrollAnimation from './components/ScrollAnimation';
 import CounterAnimation from './components/CounterAnimation';
+import SectionHead from './components/SectionHead';
+import GridLines from './components/GridLines';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import TelemetryGauges from './components/infographics/TelemetryGauges';
 import GrowthModeler from './components/infographics/GrowthModeler';
-import Link from 'next/link';
+import PerformanceDashboard from './components/infographics/PerformanceDashboard';
 import { projects, awards, blogPosts } from './data';
 
-const expertiseItems = [
-  { number: '01', name: 'Branding' },
-  { number: '02', name: 'Mobile Apps' },
-  { number: '03', name: 'Social Media' },
-  { number: '04', name: 'Web Development' },
+const pills = [
+  { label: 'Brand Strategy', href: '/expertise#branding' },
+  { label: 'Positioning', href: '/expertise#branding' },
+  { label: 'Visual Identity', href: '/expertise#branding' },
+  { label: 'Mobile Apps', href: '/expertise#mobile-apps' },
+  { label: 'Social Media', href: '/expertise#social-media' },
+  { label: 'Web Development', href: '/expertise#web-development' },
 ];
 
-const projectCardGradients = [
-  'linear-gradient(135deg, #1a1008 0%, #3d2810 100%)',
-  'linear-gradient(135deg, #071a1a 0%, #0d3d3d 100%)',
-  'linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%)',
-  'linear-gradient(135deg, #0a140a 0%, #1a2e1a 100%)',
+const clients = [
+  { name: 'VELÓRA', className: 'font-light tracking-[0.35em] text-lg' },
+  { name: 'Vireon Health', className: 'font-semibold tracking-tight text-xl' },
+  { name: 'AURA', className: 'font-black tracking-[0.2em] text-xl' },
+  { name: 'lumora', className: 'font-medium tracking-tight text-2xl lowercase' },
 ];
 
-const blogCardGradients = [
-  'linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%)',
-  'linear-gradient(135deg, #14100a 0%, #2e220a 100%)',
-  'linear-gradient(135deg, #0a140f 0%, #0a2e18 100%)',
-  'linear-gradient(135deg, #100a14 0%, #1e0a2e 100%)',
+const stats = [
+  { end: 20, suffix: '+', label: 'Years of experience', note: 'Founded in Brooklyn, 2005' },
+  { end: 150, suffix: '+', label: 'Projects delivered', note: 'Across 11 industries' },
+  { end: 9990, suffix: '', label: 'Hours on client work', note: 'In the last 12 months', separator: true },
+  { end: 26, suffix: '', label: 'Industry awards', note: 'Framer, Awwwards, FWA and more' },
 ];
+
+const services = [
+  { id: 'branding', n: '01', name: 'Branding', body: 'Strategy, positioning and identity systems that give your business a clear, ownable place in the market.', icon: <path d="M12 3v18M3 12h18M7 7l10 10M17 7L7 17" /> },
+  { id: 'mobile-apps', n: '02', name: 'Mobile Apps', body: 'Product strategy and design for apps that customers keep on their home screen and actually use.', icon: <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2" /> },
+  { id: 'social-media', n: '03', name: 'Social Media', body: 'Content strategy and creative systems that build audiences and turn attention into demand.', icon: <path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0M12 4v16M4.5 9h15M4.5 15h15" /> },
+  { id: 'web-development', n: '04', name: 'Web Development', body: 'Fast, considered websites built to communicate your positioning and convert the right visitors.', icon: <path d="M3 5h18v14H3zM3 9h18M7 7h.01M10 7h.01" /> },
+];
+
+const gradients = [
+  'linear-gradient(140deg, #1d1307 0%, #45300f 55%, #6b4a12 100%)',
+  'linear-gradient(140deg, #061616 0%, #0b3333 55%, #145252 100%)',
+  'linear-gradient(140deg, #0b0b12 0%, #1b1b2c 55%, #2b2b46 100%)',
+  'linear-gradient(140deg, #08110a 0%, #15291a 55%, #22412b 100%)',
+];
+
+function Badge() {
+  return (
+    <span className="relative inline-flex shrink-0 w-[0.9em] h-[0.9em] align-middle group/badge" aria-hidden>
+      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_18s_linear_infinite] group-hover/badge:animate-[spin_4s_linear_infinite]">
+        <defs>
+          <path id="badgeCircle" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+        </defs>
+        <circle cx="50" cy="50" r="49" fill="#111111" stroke="#333333" strokeWidth="1" />
+        <text fill="#999999" fontSize="9.5" fontFamily="'JetBrains Mono', monospace" letterSpacing="3.2">
+          <textPath href="#badgeCircle">CHART+FOSTER · EST. 2005 · BROOKLYN ·</textPath>
+        </text>
+      </svg>
+      <span className="absolute inset-0 flex items-center justify-center">
+        <span className="relative w-[28%] h-[28%]">
+          <span className="absolute left-1/2 top-0 bottom-0 w-[22%] -translate-x-1/2 bg-gold" />
+          <span className="absolute top-1/2 left-0 right-0 h-[22%] -translate-y-1/2 bg-gold" />
+        </span>
+      </span>
+    </span>
+  );
+}
 
 export default function Home() {
   return (
     <main className="bg-primary text-white overflow-x-hidden">
-
-      {/* ─── Section 1: Hero ─── */}
-      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
-        {/* Gradient overlay background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[#0d0d14] pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 60% -10%, rgba(80,60,160,0.12), transparent)' }} />
-
-        {/* Main hero content */}
-        <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 lg:px-16 pt-40 md:pt-48 flex-1 flex flex-col justify-center">
-          <ScrollAnimation>
-            <h1 className="text-display font-extrabold leading-none tracking-tight">
-              <span className="block">Crafting</span>
-              <span className="block">Award</span>
-              <span className="block">Winning</span>
-              <span className="block text-muted">Experiences for the World&apos;s Most Influential Brands.</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-muted text-lg md:text-xl leading-relaxed font-light">
-              We are a strategic brand and design studio helping ambitious companies
-              build identities that resonate, convert, and endure.
-            </p>
-          </ScrollAnimation>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 lg:px-16 pb-10 w-full">
-          <div className="flex items-end justify-between">
-            {/* Scroll to explore */}
-            <div className="flex flex-col items-start gap-2">
-              <span className="text-sm text-muted tracking-widest uppercase">Scroll to explore</span>
-              <div className="flex flex-col items-center gap-1">
-                <span className="w-px h-10 bg-gradient-to-b from-muted/60 to-transparent block" />
-                <svg
-                  className="text-muted animate-bounce"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7 1v12M1 7l6 6 6-6"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
+      {/* Hero */}
+      <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
+        <GridLines />
+        <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
+          <div className="container-x h-full">
+            <div className="relative h-full">
+              <div className="absolute top-0 left-3/4 -translate-x-1/2 h-[34%] w-px gold-beam" />
+              <div className="absolute top-[34%] left-3/4 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gold shadow-[0_0_16px_4px_rgba(244,178,35,0.5)]" />
             </div>
-
-            {/* Trusted by Global Brands */}
-            <SectionLabel text="Trusted by Global Brands" />
           </div>
         </div>
-      </section>
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[60%]" style={{ background: 'radial-gradient(ellipse 60% 60% at 75% 0%, rgba(244,178,35,0.08), transparent 70%)' }} />
 
-      {/* ─── Section 2: Inline Testimonial Quote ─── */}
-      <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
+        <div className="relative container-x w-full pt-36 md:pt-44 flex-1 flex flex-col min-w-0">
           <ScrollAnimation>
-            <blockquote className="text-h2 font-bold leading-snug max-w-4xl">
-              &ldquo;Chart+Foster completely transformed how we think about our brand.&rdquo;
-            </blockquote>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-surface-light border border-border flex items-center justify-center text-sm font-bold text-muted flex-shrink-0">
-                SR
-              </div>
-              <div>
-                <p className="font-semibold text-white">Sophia Reynolds</p>
-                <p className="text-sm text-muted">CEO, Vel&oacute;ra Chocolate</p>
-              </div>
-            </div>
+            <span className="eyebrow-pill">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+              Brand &amp; business strategy &middot; $10M+ companies
+            </span>
+            <h1 className="text-display mt-10">
+              <span className="block">Crafting</span>
+              <span className="flex flex-wrap items-center gap-x-[0.18em]">
+                Award <Badge /> Winning
+              </span>
+              <span className="block text-h2 text-muted mt-6 md:mt-8 max-w-4xl !font-semibold">
+                Experiences for the world&apos;s most influential brands.
+              </span>
+            </h1>
           </ScrollAnimation>
-        </div>
-      </section>
 
-      {/* ─── Section 3: Stats ─── */}
-      <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Counters */}
-            <ScrollAnimation>
-              <div className="flex flex-col gap-12">
-                <div>
-                  <div className="text-stat font-extrabold leading-none tabular-nums text-white">
-                    <CounterAnimation end={20} suffix="+" className="text-stat font-extrabold" />
-                  </div>
-                  <p className="mt-3 text-muted text-sm tracking-widest uppercase font-medium">
-                    years of experience
-                  </p>
-                </div>
-                <div>
-                  <div className="text-stat font-extrabold leading-none tabular-nums text-white">
-                    <CounterAnimation end={9990} separator className="text-stat font-extrabold" />
-                  </div>
-                  <p className="mt-3 text-muted text-sm tracking-widest uppercase font-medium">
-                    hours invested in client success
-                  </p>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            {/* Body copy */}
-            <ScrollAnimation delay={150}>
-              <div className="space-y-6">
-                <p className="text-xl md:text-2xl font-light leading-relaxed text-white">
-                  We don&apos;t just build brands — we architect lasting competitive advantages
-                  for businesses that refuse to be average.
-                </p>
-                <p className="text-muted leading-relaxed">
-                  Chart+Foster was founded on a simple belief: that extraordinary brands are
-                  the result of extraordinary thinking. Over two decades, we&apos;ve refined a
-                  process that fuses strategic rigour with creative fearlessness — delivering
-                  work that moves markets, shifts perceptions, and generates measurable
-                  business outcomes.
-                </p>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white border-b border-white pb-0.5 hover:text-muted hover:border-muted transition-colors group"
-                >
-                  About our firm
-                  <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+          <ScrollAnimation>
+            <div className="mt-16 md:mt-20 border-t border-border-light pt-8 grid grid-cols-12 gap-x-6 gap-y-10 items-start">
+              <p className="col-span-12 md:col-span-6 lg:col-span-4 text-muted text-lg leading-relaxed">
+                We help leadership teams at established companies sharpen their positioning, build brands that command a premium, and turn strategy into growth.
+              </p>
+              <div className="col-span-12 md:col-span-6 lg:col-span-3 flex flex-wrap gap-3">
+                <Link href="/contact" className="btn-primary">
+                  Start a project <span aria-hidden>&rarr;</span>
+                </Link>
+                <Link href="/projects" className="btn-ghost">
+                  See our work
                 </Link>
               </div>
-            </ScrollAnimation>
+              <div className="col-span-12 lg:col-span-5 flex flex-wrap gap-2.5 lg:justify-end">
+                {pills.map((p, i) => (
+                  <Link
+                    key={p.label}
+                    href={p.href}
+                    className="px-4 py-2.5 rounded-btn border border-border-light bg-surface text-sm text-white/80 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.9)] hover:border-gold hover:text-white hover:-translate-y-0.5 transition-all duration-300"
+                    style={{ transitionDelay: `${i * 20}ms` }}
+                  >
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </ScrollAnimation>
+
+          <div className="mt-auto pt-16 pb-8 flex items-end justify-between gap-6">
+            <a href="#clients" className="mono-label flex items-center gap-4 hover:!text-white transition-colors">
+              <span className="relative block w-px h-10 bg-border-light overflow-hidden">
+                <span className="absolute inset-x-0 top-0 h-1/2 bg-gold animate-[scrollCue_2s_ease-in-out_infinite]" />
+              </span>
+              Scroll to explore
+            </a>
+            <p className="mono-label hidden sm:block">Trusted by established brands</p>
           </div>
         </div>
       </section>
 
-      <TelemetryGauges />
-
-      {/* ─── Section 4: Projects Preview ─── */}
-      <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          {/* Header row */}
-          <ScrollAnimation>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-              <div>
-                <SectionLabel text="Projects" />
-                <p className="mt-4 text-muted max-w-lg leading-relaxed">
-                  A selection of our most celebrated brand and digital transformations —
-                  each one a study in what happens when strategy meets craft.
-                </p>
+      {/* Clients */}
+      <section id="clients" className="scroll-mt-20">
+        <div className="container-x">
+          <div className="cell-grid grid-cols-2 md:grid-cols-4">
+            {clients.map((c) => (
+              <div key={c.name} className="h-28 md:h-36 flex items-center justify-center text-white/50 hover:text-white hover:!bg-surface transition-colors duration-300">
+                <span className={c.className}>{c.name}</span>
               </div>
-              <Link
-                href="/projects"
-                className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-white border-b border-white pb-0.5 hover:text-muted hover:border-muted transition-colors group"
-              >
-                View all
-                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who we are */}
+      <section className="py-section">
+        <div className="container-x">
+          <SectionHead label="Who we are" index="01" title="A strategy partner for companies ready for their next stage." />
+          <ScrollAnimation>
+            <div className="grid grid-cols-12 gap-x-6">
+              <div className="col-span-12 md:col-start-4 md:col-span-9">
+                <p className="text-lead text-white max-w-4xl">
+                  Chart+Foster works with founders and leadership teams at $10M+ companies. We combine business strategy with brand craft, so the way you look, speak and sell reflects where the company is going, not where it has been.
+                </p>
+                <Link href="/about" className="link-underline mt-8 text-sm">
+                  About the firm <span className="arrow">&rarr;</span>
+                </Link>
+              </div>
             </div>
           </ScrollAnimation>
 
-          {/* 2×2 card grid */}
-          <ScrollAnimation stagger>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {projects.slice(0, 4).map((project, i) => (
-                <Link
-                  key={project.slug}
-                  href={`/projects/${project.slug}`}
-                  className="card-hover block group"
-                >
-                  {/* Image placeholder */}
-                  <div
-                    className="aspect-[4/3] rounded-card bg-surface-light overflow-hidden relative mb-4"
-                    style={{ background: projectCardGradients[i % projectCardGradients.length] }}
-                  >
-                    <div className="absolute inset-0 flex items-end p-6">
-                      <span className="text-xs font-medium text-white/40 uppercase tracking-widest">
-                        {project.category}
-                      </span>
-                    </div>
+          <ScrollAnimation>
+            <div className="mt-16 md:mt-24 cell-grid grid-cols-2 lg:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.label} className="p-6 md:p-8 flex flex-col justify-between min-h-[13rem] md:min-h-[15rem]">
+                  <p className="mono-label">{s.label}</p>
+                  <div>
+                    <CounterAnimation end={s.end} suffix={s.suffix} separator={s.separator} className="block tabular-nums font-extrabold tracking-[-0.04em] leading-none text-[clamp(2.5rem,4.6vw,4.75rem)]" />
+                    <p className="text-xs text-muted mt-3">{s.note}</p>
                   </div>
-                  {/* Card text */}
-                  <div className="px-1">
-                    <p className="font-bold text-lg text-white group-hover:text-muted transition-colors">
-                      {project.name}
-                    </p>
-                    <p className="text-muted text-sm mt-1">{project.category}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation>
+            <figure className="mt-16 md:mt-24 grid grid-cols-12 gap-x-6 gap-y-6">
+              <figcaption className="col-span-12 md:col-span-3 order-2 md:order-1 flex items-center md:items-start gap-4">
+                <span className="w-11 h-11 rounded-full border border-border-light flex items-center justify-center font-mono text-[11px] text-gold">SR</span>
+                <span>
+                  <span className="block font-semibold text-sm">Sophia Reynolds</span>
+                  <span className="block text-sm text-muted">CEO, Vel&oacute;ra Chocolate</span>
+                </span>
+              </figcaption>
+              <blockquote className="col-span-12 md:col-span-9 order-1 md:order-2 text-h3 !font-medium">
+                <span className="text-gold">&ldquo;</span>Chart+Foster completely changed how we think about our brand.<span className="text-gold">&rdquo;</span>
+              </blockquote>
+            </figure>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      <PerformanceDashboard />
+
+      {/* Expertise */}
+      <section className="py-section">
+        <div className="container-x">
+          <SectionHead
+            label="Expertise"
+            index="02"
+            title="Four disciplines. One connected strategy."
+            intro="Each practice stands on its own, but the work is strongest when they share one positioning."
+            action={{ href: '/expertise', label: 'Explore expertise' }}
+          />
+          <ScrollAnimation stagger>
+            <div className="cell-grid md:grid-cols-2 lg:grid-cols-4">
+              {services.map((s) => (
+                <Link key={s.id} href={`/expertise#${s.id}`} className="group relative p-8 min-h-[22rem] flex flex-col justify-between hover:!bg-surface transition-colors duration-300">
+                  <span className="absolute top-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-500" />
+                  <div className="flex items-start justify-between">
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 text-white group-hover:text-gold transition-colors" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                      {s.icon}
+                    </svg>
+                    <span className="mono-label">{s.n}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight">{s.name}</h3>
+                    <p className="text-sm text-muted leading-relaxed mt-3">{s.body}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                      Learn more <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </span>
                   </div>
                 </Link>
               ))}
@@ -221,61 +242,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Section 5: Statement ─── */}
-      <section className="py-section border-t border-border overflow-hidden text-center">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <p className="text-h1 font-extrabold leading-tight">
-              Less talk,<br />more impact.
-            </p>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* ─── Section 6: Expertise Preview ─── */}
-      <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <div className="mb-12">
-              <SectionLabel text="Expertise" />
-              <p className="mt-4 text-muted max-w-lg leading-relaxed">
-                Four interconnected disciplines, mastered over two decades, deployed in
-                service of brands that demand excellence.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          {/* Service rows */}
-          <div className="border-t border-border">
-            {expertiseItems.map((item, i) => (
-              <ScrollAnimation key={item.number} delay={i * 80}>
-                <Link
-                  href="/expertise"
-                  className="flex items-center justify-between py-6 md:py-8 border-b border-border group hover:text-muted transition-colors duration-300"
-                >
-                  <div className="flex items-center gap-6 md:gap-10">
-                    <span className="text-sm text-muted font-mono w-8 flex-shrink-0 group-hover:text-white/60 transition-colors">
-                      {item.number}
-                    </span>
-                    <span className="text-h3 font-bold text-white leading-none group-hover:text-muted transition-colors duration-300">
-                      {item.name}
+      {/* Projects */}
+      <section className="py-section">
+        <div className="container-x">
+          <SectionHead
+            label="Selected work"
+            index="03"
+            title="Brands we’ve helped define."
+            action={{ href: '/projects', label: 'View all projects' }}
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-16">
+            {projects.slice(0, 4).map((p, i) => (
+              <ScrollAnimation key={p.slug} delay={(i % 2) * 120}>
+                <Link href={`/projects/${p.slug}`} className="group block">
+                  <div className="relative aspect-[4/3] rounded-card overflow-hidden border border-border">
+                    <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]" style={{ background: gradients[i % gradients.length] }} />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.6),transparent_50%)]" />
+                    <span className="absolute top-5 left-5 mono-label !text-white/70">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="absolute bottom-5 left-5 eyebrow-pill !bg-primary/60 backdrop-blur">{p.category}</span>
+                    <span className="absolute bottom-5 right-5 w-11 h-11 rounded-full bg-white text-primary flex items-center justify-center translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      &rarr;
                     </span>
                   </div>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-muted group-hover:text-white group-hover:translate-x-2 transition-all duration-300 flex-shrink-0 ml-4"
-                  >
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <div className="mt-5 border-t border-border pt-5 flex items-baseline justify-between gap-4">
+                    <h3 className="text-2xl md:text-3xl font-semibold tracking-tight group-hover:text-gold transition-colors">{p.name}</h3>
+                    <span className="mono-label shrink-0">{p.deliverables.length} deliverables</span>
+                  </div>
                 </Link>
               </ScrollAnimation>
             ))}
@@ -283,140 +275,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Section 7: Awards Marquee ─── */}
-      <section className="py-section border-t border-border overflow-hidden">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16 mb-10">
+      {/* Statement + index */}
+      <section className="py-section border-y border-border">
+        <div className="container-x">
           <ScrollAnimation>
-            <SectionLabel text="Awards" />
-            <p className="mt-4 text-muted max-w-lg leading-relaxed">
-              26 industry-recognized awards across the world&apos;s most prestigious
-              creative and digital platforms.
+            <p className="text-display !leading-[0.9]">
+              Less talk,
+              <br />
+              more impact<span className="text-gold">.</span>
             </p>
           </ScrollAnimation>
-        </div>
-
-        {/* Marquee strip */}
-        <div className="relative flex overflow-hidden border-t border-b border-border py-6">
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-primary to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none" />
-
-          <div className="flex animate-marquee marquee-track whitespace-nowrap">
-            {/* First copy */}
-            {awards.map((award) => (
-              <span
-                key={`a-${award.name}`}
-                className="inline-flex items-center gap-3 mx-8 text-sm font-medium"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-border-light flex-shrink-0" />
-                <span className="font-semibold text-white/80">{award.name}</span>
-                <span className="text-muted">&times;{award.count}</span>
-              </span>
-            ))}
-            {/* Duplicate for seamless loop */}
-            {awards.map((award) => (
-              <span
-                key={`b-${award.name}`}
-                className="inline-flex items-center gap-3 mx-8 text-sm font-medium"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-border-light flex-shrink-0" />
-                <span className="font-semibold text-white/80">{award.name}</span>
-                <span className="text-muted">&times;{award.count}</span>
-              </span>
-            ))}
-            {/* Extra copies for wide screens */}
-            {awards.map((award) => (
-              <span
-                key={`c-${award.name}`}
-                className="inline-flex items-center gap-3 mx-8 text-sm font-medium"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-border-light flex-shrink-0" />
-                <span className="font-semibold text-white/80">{award.name}</span>
-                <span className="text-muted">&times;{award.count}</span>
-              </span>
-            ))}
-            {awards.map((award) => (
-              <span
-                key={`d-${award.name}`}
-                className="inline-flex items-center gap-3 mx-8 text-sm font-medium"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-border-light flex-shrink-0" />
-                <span className="font-semibold text-white/80">{award.name}</span>
-                <span className="text-muted">&times;{award.count}</span>
-              </span>
-            ))}
+          <div className="mt-16 md:mt-24 border-t border-white/80 pt-6 grid grid-cols-12 gap-x-6 gap-y-12">
+            <p className="col-span-12 md:col-span-3 mono-label flex items-center gap-3">
+              <span className="text-gold">{'//'}</span>Index
+            </p>
+            <div className="col-span-12 sm:col-span-6 md:col-span-4">
+              <h3 className="text-2xl font-bold tracking-tight">Selected work</h3>
+              <p className="mono-label mt-1 mb-5">Brand &amp; digital</p>
+              <ul className="border-t border-border">
+                {projects.map((p) => (
+                  <li key={p.slug} className="border-b border-border">
+                    <Link href={`/projects/${p.slug}`} className="flex justify-between gap-4 py-3 text-sm group">
+                      <span className="text-white/80 group-hover:text-gold transition-colors">{p.name}</span>
+                      <span className="text-muted truncate">{p.category}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-span-12 sm:col-span-6 md:col-span-5">
+              <h3 className="text-2xl font-bold tracking-tight">Recognition</h3>
+              <p className="mono-label mt-1 mb-5">26 awards</p>
+              <ul className="border-t border-border grid grid-cols-2 gap-x-6">
+                {awards.map((a) => (
+                  <li key={a.name} className="border-b border-border flex justify-between py-3 text-sm">
+                    <span className="text-white/80">{a.name}</span>
+                    <span className="font-mono text-gold">&times;{a.count}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── Section 8: Bold Statement ─── */}
-      <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <div className="relative flex overflow-hidden border-b border-border py-5 bg-surface">
+        <div className="flex animate-marquee marquee-track whitespace-nowrap">
+          {[0, 1, 2, 3].map((copy) =>
+            awards.map((a) => (
+              <span key={`${copy}-${a.name}`} className="inline-flex items-center gap-3 mx-8 mono-label !text-white/70">
+                <span className="text-gold">+</span>
+                {a.name} <span className="text-muted">&times;{a.count}</span>
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+
+      <TelemetryGauges />
+
+      {/* Philosophy */}
+      <section className="py-section">
+        <div className="container-x">
           <ScrollAnimation>
-            <blockquote className="text-h2 font-bold leading-snug max-w-4xl mx-auto">
-              &ldquo;You don&apos;t get many chances to be iconic.
-              So we make our first shot truly unforgettable.&rdquo;
-            </blockquote>
+            <div className="border-t border-border-light pt-6 grid grid-cols-12 gap-x-6 gap-y-8">
+              <p className="col-span-12 md:col-span-3 mono-label flex items-center gap-3">
+                <span className="text-gold">{'//'}</span>Philosophy
+              </p>
+              <p className="col-span-12 md:col-span-9 text-h2">
+                You don&apos;t get many chances to be iconic. <span className="text-muted">So we make the first one count.</span>
+              </p>
+            </div>
           </ScrollAnimation>
         </div>
       </section>
 
       <GrowthModeler />
 
-      {/* ─── Section 9: Testimonials Carousel ─── */}
-      <div className="border-t border-border">
-        <Testimonials />
-      </div>
+      <Testimonials />
 
-      {/* ─── Section 10: Blog Preview ─── */}
+      {/* Journal */}
       <section className="py-section border-t border-border">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          {/* Header */}
-          <ScrollAnimation>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-              <div>
-                <SectionLabel text="Blog" />
-                <p className="mt-4 text-muted max-w-lg leading-relaxed">
-                  Insights, perspectives, and ideas from the Chart+Foster team — on
-                  branding, design, and building businesses that last.
-                </p>
-              </div>
-              <Link
-                href="/blog"
-                className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-white border-b border-white pb-0.5 hover:text-muted hover:border-muted transition-colors group"
-              >
-                All articles
-                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-              </Link>
-            </div>
-          </ScrollAnimation>
-
-          {/* Horizontal scroll row */}
-          <ScrollAnimation>
-            <div className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 md:-mx-10 md:px-10 lg:-mx-16 lg:px-16">
+        <div className="container-x">
+          <SectionHead label="Journal" index="04" title="Thinking on brand, strategy and growth." action={{ href: '/blog', label: 'All articles' }} />
+          <ScrollAnimation stagger>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
               {blogPosts.map((post, i) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="card-hover flex-none w-72 md:w-80 group block"
-                >
-                  {/* Thumbnail placeholder */}
-                  <div
-                    className="aspect-[3/2] rounded-card bg-surface-light overflow-hidden mb-4"
-                    style={{ background: blogCardGradients[i % blogCardGradients.length] }}
-                  />
-                  {/* Card body */}
-                  <div className="px-1 space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs font-medium text-muted bg-surface-light px-2.5 py-1 rounded-btn border border-border">
-                        {post.category}
-                      </span>
-                      <span className="text-xs text-muted">{post.readTime}</span>
-                    </div>
-                    <p className="font-bold leading-snug text-white group-hover:text-muted transition-colors">
-                      {post.title}
-                    </p>
+                <Link key={post.slug} href="/blog" className="group block">
+                  <div className="relative aspect-[4/3] rounded-card overflow-hidden border border-border">
+                    <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ background: gradients[(i + 1) % gradients.length] }} />
                   </div>
+                  <div className="mt-5 flex items-center justify-between mono-label">
+                    <span className="!text-white/80">{post.category}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight group-hover:text-gold transition-colors">{post.title}</h3>
                 </Link>
               ))}
             </div>
@@ -424,11 +377,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Section 11: FAQ ─── */}
-      <div className="border-t border-border">
-        <FAQ />
-      </div>
-
+      <FAQ />
     </main>
   );
 }

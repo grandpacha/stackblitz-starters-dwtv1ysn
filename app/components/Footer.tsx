@@ -1,118 +1,144 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/expertise', label: 'Expertise' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+const columns = [
+  {
+    title: 'Pages',
+    links: [
+      { href: '/', label: 'Home' },
+      { href: '/about', label: 'About' },
+      { href: '/expertise', label: 'Expertise' },
+      { href: '/projects', label: 'Projects' },
+      { href: '/blog', label: 'Blog' },
+      { href: '/contact', label: 'Contact' },
+    ],
+  },
+  {
+    title: 'Expertise',
+    links: [
+      { href: '/expertise#branding', label: 'Branding' },
+      { href: '/expertise#mobile-apps', label: 'Mobile Apps' },
+      { href: '/expertise#social-media', label: 'Social Media' },
+      { href: '/expertise#web-development', label: 'Web Development' },
+    ],
+  },
 ];
 
-const expertiseLinks = [
-  { href: '/expertise#branding', label: 'Branding' },
-  { href: '/expertise#mobile-apps', label: 'Mobile Apps' },
-  { href: '/expertise#social-media', label: 'Social Media' },
-  { href: '/expertise#web-development', label: 'Web Development' },
-];
-
-const socials = [
-  { href: '#', label: 'Twitter' },
-  { href: '#', label: 'Dribbble' },
-  { href: '#', label: 'Behance' },
+const bottomLinks = [
+  { href: 'https://maps.google.com/?q=146+Franklin+Street+Brooklyn+NY+11222', label: '146 Franklin Street, Brooklyn, NY 11222', external: true },
+  { href: '#', label: 'Twitter', external: true },
+  { href: '#', label: 'Dribbble', external: true },
+  { href: '#', label: 'Behance', external: true },
 ];
 
 export default function Footer() {
+  const [subscribed, setSubscribed] = useState(false);
+
   return (
-    <footer className="bg-surface pt-20 pb-8">
-      <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-border">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-block">
-              <Image src="/logo.svg" alt="Chart+Foster" width={220} height={27} />
-            </Link>
-            <p className="text-muted text-sm mt-4 leading-relaxed max-w-xs">
-              A brand and business strategy firm helping ambitious companies craft iconic, unforgettable brand experiences.
+    <footer className="bg-surface border-t border-border">
+      <div className="container-x pt-24 md:pt-32">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10 pb-20 md:pb-28">
+          <div className="col-span-12 md:col-span-3">
+            <p className="mono-label flex items-center gap-3">
+              <span className="text-gold">{'//'}</span>Start a project
             </p>
           </div>
-
-          {/* Links */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Pages</h4>
-            <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-muted text-sm hover:text-white transition-colors duration-200">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Expertise */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Expertise</h4>
-            <ul className="space-y-3">
-              {expertiseLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-muted text-sm hover:text-white transition-colors duration-200">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <h4 className="text-sm font-semibold mb-4 mt-8 uppercase tracking-wider">Social</h4>
-            <ul className="space-y-3">
-              {socials.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-muted text-sm hover:text-white transition-colors duration-200">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter + Contact */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Newsletter</h4>
-            <p className="text-muted text-sm mb-4">Stay updated with our latest insights and projects.</p>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 !py-2.5 !px-3 !text-sm !rounded-lg"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2.5 bg-white text-primary text-sm font-medium rounded-lg hover:bg-cream transition-colors duration-200 flex-shrink-0"
-              >
-                Subscribe
-              </button>
-            </form>
-
-            <h4 className="text-sm font-semibold mb-4 mt-8 uppercase tracking-wider">Contact</h4>
-            <div className="space-y-2 text-muted text-sm">
-              <p>146 Franklin Street<br />Brooklyn, NY 11222</p>
-              <p>hello@chartfoster.co</p>
-              <p>+1 (347) 555-0146</p>
+          <div className="col-span-12 md:col-span-9">
+            <p className="text-h1 max-w-4xl">
+              Let&apos;s build something <span className="text-muted">worth remembering.</span>
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-8">
+              <Link href="/contact" className="link-underline text-xl md:text-2xl">
+                Contact us <span className="arrow">&rarr;</span>
+              </Link>
+              <a href="mailto:hello@chartfoster.co" className="text-muted hover:text-white transition-colors">
+                hello@chartfoster.co
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 gap-4">
-          <p className="text-muted text-xs">
-            &copy; 2005&ndash;2025 Chart+Foster Co. All Rights Reserved.
-          </p>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-12">
+          <div className="col-span-12 lg:col-span-4 border-t border-border-light pt-6">
+            <Image src="/logo.svg" alt="Chart+Foster" width={200} height={24} />
+            <p className="text-muted text-sm mt-6 leading-relaxed max-w-xs">
+              A brand and business strategy firm for companies with $10M+ in revenue. Positioning, identity and growth strategy, built to last.
+            </p>
+          </div>
+
+          {columns.map((col) => (
+            <div key={col.title} className="col-span-6 md:col-span-4 lg:col-span-2 border-t border-border-light pt-6">
+              <p className="mono-label mb-5">{col.title}</p>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-white/80 hover:text-gold transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div className="col-span-12 md:col-span-4 lg:col-span-4 border-t border-border-light pt-6">
+            <p className="mono-label mb-5">Newsletter</p>
+            <p className="text-sm text-muted mb-5 leading-relaxed">One considered note a month on brand, positioning and growth.</p>
+            {subscribed ? (
+              <p className="text-sm text-gold" role="status">Thanks. You&apos;re on the list.</p>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSubscribed(true);
+                }}
+                className="flex items-stretch border-b border-border-light focus-within:border-white transition-colors"
+              >
+                <label htmlFor="footer-email" className="sr-only">Email address</label>
+                <input
+                  id="footer-email"
+                  type="email"
+                  required
+                  placeholder="Your email"
+                  className="flex-1 !bg-transparent !border-0 !rounded-none !px-0 !py-3 text-sm"
+                />
+                <button type="submit" className="mono-label !text-white hover:!text-gold transition-colors pl-4">
+                  Subscribe &rarr;
+                </button>
+              </form>
+            )}
+            <div className="mt-8 space-y-1 text-sm">
+              <a href="tel:+13475550146" className="block text-white/80 hover:text-white">+1 (347) 555-0146</a>
+              <a href="mailto:hello@chartfoster.co" className="block text-white/80 hover:text-white">hello@chartfoster.co</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] border-t border-white/80">
+          {bottomLinks.map((link, i) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.external && link.href !== '#' ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className={`flex items-center justify-between gap-4 py-5 text-sm font-semibold hover:text-gold transition-colors border-b md:border-b-0 border-border ${
+                i > 0 ? 'md:pl-6 md:border-l' : 'md:pr-6'
+              }`}
+            >
+              <span className="truncate">{link.label}</span>
+              <span aria-hidden>&#9656;</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="py-8 flex flex-col md:flex-row justify-between gap-4 border-t border-border">
+          <p className="mono-label !tracking-[0.12em]">&copy; 2005&ndash;2025 Chart+Foster Co. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="text-muted text-xs hover:text-white transition-colors duration-200">Privacy Policy</a>
-            <a href="#" className="text-muted text-xs hover:text-white transition-colors duration-200">Terms of Service</a>
+            <a href="#" className="mono-label !tracking-[0.12em] hover:!text-white">Privacy Policy</a>
+            <a href="#" className="mono-label !tracking-[0.12em] hover:!text-white">Terms of Service</a>
           </div>
         </div>
       </div>

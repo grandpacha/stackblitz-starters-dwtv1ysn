@@ -2,6 +2,7 @@
 
 import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
+import PageHeader from '../components/PageHeader';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import LifecycleWheel from '../components/infographics/LifecycleWheel';
@@ -78,66 +79,41 @@ const services = [
 export default function ExpertisePage() {
   return (
     <main>
-      {/* Section 1 — Page Header */}
-      <section className="pt-32 py-section">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <SectionLabel text="Expertise" />
-          </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <h1 className="text-h1 mt-6 max-w-4xl">
-              We build things brands brag about&nbsp;— and competitors lose sleep over.
-            </h1>
-          </ScrollAnimation>
-          <ScrollAnimation delay={200}>
-            <p className="text-muted text-xl mt-6 max-w-2xl">
-              Craft the Brand They Remember. Move Faster Than They Can Follow.
-            </p>
-          </ScrollAnimation>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Expertise"
+        title={<>We build the things brands brag about <span className="text-muted">and competitors lose sleep over.</span></>}
+        meta={[
+          { label: 'Disciplines', value: 'Branding, Mobile, Social, Web' },
+          { label: 'Typical engagement', value: '8–24 weeks' },
+        ]}
+        lead="Craft the brand they remember. Move faster than they can follow."
+      />
 
       {/* Section 2 — Services Detail */}
       <section className="py-section">
         <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              id={service.id}
-              className={`border-b border-border pb-16 ${index !== 0 ? 'pt-16' : ''}`}
-            >
+          {services.map((service) => (
+            <div key={service.id} id={service.id} className="scroll-mt-24 border-t border-border-light pt-6 pb-20 md:pb-28">
               <ScrollAnimation>
-                {/* Top bar — number + name */}
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="text-muted text-sm font-medium tabular-nums">
-                    {service.number}
-                  </span>
-                  <span className="w-px h-4 bg-border-light" />
-                  <span className="text-sm font-semibold uppercase tracking-widest text-muted">
-                    {service.name}
-                  </span>
-                </div>
-
-                <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-                  {/* Left — heading + description */}
-                  <div>
-                    <h2 className="text-h2 mb-6">{service.heading}</h2>
-                    <p className="text-muted text-lg leading-relaxed">
-                      {service.description}
-                    </p>
+                <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+                  <div className="col-span-12 md:col-span-3 flex md:flex-col gap-4 md:gap-3 items-baseline md:items-start">
+                    <span className="font-mono text-sm text-gold">{service.number}</span>
+                    <span className="mono-label !text-white">{service.name}</span>
                   </div>
-
-                  {/* Right — sub-services list */}
-                  <div className="space-y-3 pt-2">
-                    {service.subServices.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-3 text-base"
-                      >
-                        <span className="text-muted mt-[0.3em] select-none">–</span>
-                        <span className="text-white/80">{item}</span>
-                      </div>
-                    ))}
+                  <div className="col-span-12 md:col-span-9">
+                    <h2 className="text-h2 max-w-3xl">{service.heading}</h2>
+                    <p className="text-muted text-lg leading-relaxed mt-6 max-w-2xl">{service.description}</p>
+                    <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-6 border-t border-border">
+                      {service.subServices.map((item, i) => (
+                        <li key={item} className="group flex items-center justify-between gap-4 py-4 border-b border-border">
+                          <span className="flex items-baseline gap-4">
+                            <span className="font-mono text-[11px] text-white/40">{String(i + 1).padStart(2, '0')}</span>
+                            <span className="text-white/80 group-hover:text-white transition-colors">{item}</span>
+                          </span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-border-light group-hover:bg-gold transition-colors" />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </ScrollAnimation>

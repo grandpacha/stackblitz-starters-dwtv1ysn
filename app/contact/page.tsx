@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
+import PageHeader from '../components/PageHeader';
 import FAQ from '../components/FAQ';
 
 interface FormState {
@@ -38,19 +39,15 @@ export default function ContactPage() {
 
   return (
     <main>
-      {/* Page Header */}
-      <section className="pt-32 pb-section">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <SectionLabel text="Contact" />
-          </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <h1 className="text-h1 mt-4 max-w-3xl">
-              Have a bold idea? We&apos;d love to hear it. Let&apos;s build something iconic together.
-            </h1>
-          </ScrollAnimation>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Contact"
+        title={<>Have a bold idea? <span className="text-muted">We&apos;d love to hear it.</span></>}
+        meta={[
+          { label: 'Studio', value: '146 Franklin Street, Brooklyn, NY' },
+          { label: 'Response time', value: 'Within one business day' },
+        ]}
+        lead="Tell us where your business is heading. We'll tell you honestly whether we can help get it there."
+      />
 
       {/* Inline Testimonial */}
       <section className="pb-section">

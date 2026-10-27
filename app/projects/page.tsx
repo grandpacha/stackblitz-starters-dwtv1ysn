@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import SectionLabel from '../components/SectionLabel';
 import ScrollAnimation from '../components/ScrollAnimation';
+import PageHeader from '../components/PageHeader';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Streamgraph from '../components/infographics/Streamgraph';
@@ -13,19 +14,15 @@ export default function ProjectsPage() {
   return (
     <main className="bg-primary text-white">
 
-      {/* Page Header */}
-      <section className="pt-32 pb-section">
-        <div className="max-w-content mx-auto px-6 md:px-10 lg:px-16">
-          <ScrollAnimation>
-            <SectionLabel text="Projects" />
-          </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <h1 className="text-h1 mt-6 max-w-4xl">
-              Bold ideas deserve bold execution. Let&apos;s build something iconic.
-            </h1>
-          </ScrollAnimation>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Projects"
+        title={<>Bold ideas deserve <span className="text-muted">bold execution.</span></>}
+        meta={[
+          { label: 'Case studies', value: '4 featured' },
+          { label: 'Sectors', value: 'Consumer, Health, Tech' },
+        ]}
+        lead="A selection of brand and digital programs for companies that wanted more than a refresh."
+      />
 
       {/* Project Case Studies */}
       <section className="py-section border-t border-border">

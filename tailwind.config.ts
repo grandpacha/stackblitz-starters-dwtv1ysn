@@ -25,11 +25,15 @@ const config: Config = {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace'],
       },
       fontSize: {
-        'display': ['clamp(2.25rem, 5vw, 5rem)', { lineHeight: '1.05', fontWeight: '800' }],
-        'h1': ['clamp(2rem, 4vw, 4.5rem)', { lineHeight: '1.05', fontWeight: '800' }],
-        'h2': ['clamp(1.75rem, 3vw, 3.5rem)', { lineHeight: '1.1', fontWeight: '700' }],
-        'h3': ['clamp(1.5rem, 2vw, 2rem)', { lineHeight: '1.2', fontWeight: '600' }],
-        'stat': ['clamp(3rem, 8vw, 7.5rem)', { lineHeight: '1', fontWeight: '800' }],
+        'display': ['clamp(2.5rem, 8vw, 8.25rem)', { lineHeight: '0.95', letterSpacing: '-0.045em', fontWeight: '800' }],
+        'h1': ['clamp(2.5rem, 6vw, 6rem)', { lineHeight: '1', letterSpacing: '-0.04em', fontWeight: '800' }],
+        'h2': ['clamp(2rem, 4.2vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.035em', fontWeight: '700' }],
+        'h3': ['clamp(1.375rem, 2.2vw, 2rem)', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'lead': ['clamp(1.25rem, 2.2vw, 1.875rem)', { lineHeight: '1.4', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'stat': ['clamp(3rem, 7vw, 6.5rem)', { lineHeight: '1', letterSpacing: '-0.04em', fontWeight: '800' }],
+      },
+      letterSpacing: {
+        label: '0.18em',
       },
       spacing: {
         'section': 'clamp(3.75rem, 8vw, 8.75rem)',
@@ -38,7 +42,7 @@ const config: Config = {
         'content': '1320px',
       },
       borderRadius: {
-        'card': '16px',
+        'card': '4px',
         'btn': '9999px',
       },
       keyframes: {

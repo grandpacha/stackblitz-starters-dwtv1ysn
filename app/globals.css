@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -23,12 +23,116 @@ body {
   overflow-x: hidden;
 }
 
-/* Section label pattern */
-.section-label {
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+/* Editorial primitives */
+.container-x {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) { .container-x { padding-left: 2.5rem; padding-right: 2.5rem; } }
+@media (min-width: 1024px) { .container-x { padding-left: 4rem; padding-right: 4rem; } }
+
+.mono-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: #999999;
-  margin-bottom: 1rem;
+}
+
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #333333;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.02);
+  max-width: 100%;
+  flex-wrap: wrap;
+  line-height: 1.6;
+}
+
+/* Shared-edge cell grids: children get hairline borders from the 1px gap */
+.cell-grid {
+  display: grid;
+  gap: 1px;
+  background: #222222;
+  border: 1px solid #222222;
+}
+.cell-grid > * { background: #0A0A0A; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #0A0A0A;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover { background: #F4B223; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid #333333;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.btn-ghost:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.04); }
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.35rem;
+  font-weight: 600;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after { transform: scaleX(0.35); }
+.link-underline .arrow { transition: transform 0.3s ease; }
+.link-underline:hover .arrow { transform: translateX(4px); }
+
+/* Gold light beam (hero) */
+@keyframes beamDrop {
+  0% { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+.gold-beam {
+  background: linear-gradient(to bottom, rgba(244,178,35,0) 0%, rgba(244,178,35,0.9) 70%, #F4B223 100%);
+  box-shadow: 0 0 18px rgba(244,178,35,0.45);
+  transform-origin: top;
+  animation: beamDrop 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 /* Scroll-triggered animations */
@@ -191,4 +295,22 @@ input[type='range']::-moz-range-thumb {
 }
 .radar-pulse {
   animation: radarWave 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes testimonialProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes scrollCue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
 }

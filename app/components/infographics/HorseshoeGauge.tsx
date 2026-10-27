@@ -24,8 +24,8 @@ export default function HorseshoeGauge() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-6 bg-surface border border-border rounded-card p-8 sm:p-12 flex justify-center">
-          <div className="relative w-full max-w-[380px] aspect-[360/380]">
-            <svg viewBox="0 0 360 380" className="w-full h-full">
+          <div className="relative w-full max-w-[380px] aspect-[360/396]">
+            <svg viewBox="0 -16 360 396" className="w-full h-full">
               {radii.map((r, i) => {
                 const x = 180 - r;
                 const d = `M ${x} 360 L ${x} 160 A ${r} ${r} 0 0 1 ${360 - x} 160 L ${360 - x} 360`;

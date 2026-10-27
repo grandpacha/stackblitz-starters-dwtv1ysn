@@ -314,3 +314,11 @@ input[type='range']::-moz-range-thumb {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(200%); }
 }
+
+/* World map hub pulse (SVG user units) */
+@keyframes hubPulse {
+  0% { r: 20px; opacity: 0.85; }
+  70% { r: 100px; opacity: 0; }
+  100% { r: 20px; opacity: 0; }
+}
+.hub-pulse { animation: hubPulse 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }

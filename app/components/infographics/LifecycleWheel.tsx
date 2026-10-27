@@ -152,18 +152,6 @@ export default function LifecycleWheel() {
               );
             })}
 
-            {rings.map((v, k) => {
-              const [x, y] = pt(rOf(v), 90);
-              return (
-                <g key={v}>
-                  <circle cx={f1(x)} cy={f1(y)} r="24" fill="#FFFFFF" />
-                  <text x={f1(x)} y={f1(y + 8)} textAnchor="middle" fill="#0A0A0A" fontSize="24" fontWeight="700" fontFamily="Inter, sans-serif">
-                    {k + 1}
-                  </text>
-                </g>
-              );
-            })}
-
             <g textAnchor="middle" style={{ pointerEvents: 'none' }}>
               <text x={CX} y={CY - 52} fill="#999999" fontSize="18" letterSpacing="3" fontFamily="'JetBrains Mono', monospace">
                 {week === null ? 'TOTAL LIFECYCLE' : `WEEK ${week + 1} · ${phases[phaseOf(week)].short}`}
@@ -177,7 +165,7 @@ export default function LifecycleWheel() {
             </g>
           </svg>
           <p className="mt-1 text-center font-mono text-[11px] text-muted">
-            Rings 1&ndash;4 = {rings.map((v) => fmt(mode, v, true)).join(' · ')} per week
+            Rings = {rings.map((v) => fmt(mode, v, true)).join(' · ')} per week
           </p>
         </div>
 

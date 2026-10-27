@@ -52,15 +52,16 @@ export default function CommitmentArcs() {
         </div>
 
         <div className="lg:col-span-7 flex justify-center">
-          <div className="w-full max-w-[560px] aspect-[560/460]">
-            <svg viewBox="0 0 560 460" className="w-full h-full overflow-visible">
+          <div className="w-full max-w-[620px] aspect-[620/470]">
+            <svg viewBox="-70 0 620 470" className="w-full h-full">
               <circle cx="240" cy="270" r="180" fill="none" stroke="#1C1C1C" strokeDasharray="2,3" />
               {tracks.map((t, i) => (
                 <g key={t.name} style={{ opacity: dim(i), transition: 'opacity 0.25s' }} onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}>
                   <path d={t.arc} fill="none" stroke={t.color} strokeWidth={t.w} strokeLinecap="round" />
-                  <circle cx={t.end[0]} cy={t.end[1]} r="4" fill={t.color} />
-                  <path d={`M ${t.end[0]} ${t.y} L 450 ${t.y}`} fill="none" stroke={t.color} strokeWidth="1" opacity="0.6" />
-                  <text x="455" y={t.y + 4} fill={t.color === '#444444' ? '#999999' : t.color} fontSize="11" fontFamily="'JetBrains Mono', monospace" fontWeight="600">
+                  <circle cx={t.end[0]} cy={t.end[1]} r="4.5" fill={t.color} />
+                  <path d={`M ${t.end[0]} ${t.y} L 52 ${t.y}`} fill="none" stroke={t.color} strokeWidth="1" opacity="0.6" />
+                  <circle cx="52" cy={t.y} r="2.5" fill={t.color} />
+                  <text x="42" y={t.y + 4} textAnchor="end" fill={t.color === '#444444' ? '#999999' : t.color} fontSize="12" fontFamily="'JetBrains Mono', monospace" fontWeight="600">
                     {t.amount.replace('M', 'm')}
                   </text>
                 </g>

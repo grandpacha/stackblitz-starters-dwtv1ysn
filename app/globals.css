@@ -1,27 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
+
+/* Editorial primitives */
+.container-x {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) { .container-x { padding-left: 2.5rem; padding-right: 2.5rem; } }
+@media (min-width: 1024px) { .container-x { padding-left: 4rem; padding-right: 4rem; } }
+
+.mono-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #999999;
+}
+
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #333333;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.02);
+  max-width: 100%;
+  flex-wrap: wrap;
+  line-height: 1.6;
+}
+
+/* Shared-edge cell grids: children get hairline borders from the 1px gap */
+.cell-grid {
+  display: grid;
+  gap: 1px;
+  background: #222222;
+  border: 1px solid #222222;
+}
+.cell-grid > * { background: #0A0A0A; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #0A0A0A;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover { background: #F4B223; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid #333333;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.btn-ghost:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.04); }
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.35rem;
+  font-weight: 600;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after { transform: scaleX(0.35); }
+.link-underline .arrow { transition: transform 0.3s ease; }
+.link-underline:hover .arrow { transform: translateX(4px); }
+
+/* Gold light beam (hero) */
+@keyframes beamDrop {
+  0% { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+.gold-beam {
+  background: linear-gradient(to bottom, rgba(244,178,35,0) 0%, rgba(244,178,35,0.9) 70%, #F4B223 100%);
+  box-shadow: 0 0 18px rgba(244,178,35,0.45);
+  transform-origin: top;
+  animation: beamDrop 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.pending {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-children.pending > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(7) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(8) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+
+/* Marquee pause on hover */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease;
+}
+.card-hover:hover {
+  transform: scale(1.02);
+}
+.card-hover:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Parallax container */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Form styles */
+input, textarea, select {
+  background-color: #1A1A1A;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #666666;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #666666;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Accordion animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+/* Testimonial transitions */
+.testimonial-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  inset: 0;
+}
+.testimonial-slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* Range sliders (override global input styling) */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  height: 6px;
+  border-radius: 9999px;
+  background: #222222;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 3px solid #0A0A0A;
+  box-shadow: 0 0 0 1px #333333;
+}
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 3px solid #0A0A0A;
+}
+
+/* Radar beacon pulse for map hubs */
+@keyframes radarWave {
+  0% { r: 4px; opacity: 0.9; }
+  70% { r: 18px; opacity: 0; }
+  100% { r: 4px; opacity: 0; }
+}
+.radar-pulse {
+  animation: radarWave 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes testimonialProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes scrollCue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* World map hub pulse (SVG user units) */
+@keyframes hubPulse {
+  0% { r: 20px; opacity: 0.85; }
+  70% { r: 100px; opacity: 0; }
+  100% { r: 20px; opacity: 0; }
+}
+.hub-pulse { animation: hubPulse 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }

@@ -1,0 +1,120 @@
+export const projects = [
+  {
+    slug: 'velora-chocolate',
+    name: 'Velóra Chocolate',
+    category: 'Luxury Consumer Goods',
+    description: 'A premium artisan chocolate brand seeking to redefine luxury in the confectionery space. We crafted an identity that speaks to indulgence, craftsmanship, and timeless elegance.',
+    longDescription: 'Velóra Chocolate came to us with a vision: to become the definitive name in luxury artisan chocolate. Their products were exceptional, but their brand didn\'t match the quality of what was inside the box. We immersed ourselves in the world of premium confectionery, studying the codes of luxury across fashion, hospitality, and fine dining to create a brand that would stand shoulder-to-shoulder with the world\'s most coveted names.',
+    challenge: 'The artisan chocolate market is crowded with brands claiming premium positioning. Velóra needed to transcend the category entirely — not just compete with other chocolatiers, but position alongside luxury lifestyle brands. The challenge was creating an identity sophisticated enough for high-end retail while maintaining the warmth and craft story that made Velóra special.',
+    solution: 'We developed a brand identity rooted in the concept of "refined indulgence" — pairing deep, rich color palettes with clean modern typography. The packaging system uses tactile materials and subtle gold foil details that reward close inspection. We designed a Shopify e-commerce experience that feels more like a luxury fashion site than a food store, and created social launch assets that generated 40K+ impressions in the first week.',
+    deliverables: ['Brand Strategy & Visual Identity', 'Packaging Design', 'Shopify E-commerce Website', 'Social Launch Assets'],
+    testimonial: {
+      quote: 'Chart+Foster didn\'t just design our brand — they understood our soul. Every touchpoint feels authentically Velóra.',
+      name: 'Sophia Reynolds',
+      title: 'CEO, Velóra Chocolate',
+    },
+    website: 'https://velora.example.com',
+  },
+  {
+    slug: 'vireon-health',
+    name: 'Vireon Health',
+    category: 'Healthcare & Wellness',
+    description: 'A digital health platform connecting patients with personalized wellness programs. We built a brand that balances clinical credibility with approachable warmth.',
+    longDescription: 'Vireon Health was disrupting the healthcare space with AI-powered wellness programs, but their brand felt cold and clinical. They needed an identity that communicated cutting-edge technology while making patients feel cared for and understood. We partnered with their team to create a brand ecosystem that bridges the gap between innovation and empathy.',
+    challenge: 'Healthcare branding walks a tightrope between authority and accessibility. Too clinical, and you alienate the everyday consumer. Too casual, and you lose the trust that\'s essential in health. Vireon needed to appeal to both B2B healthcare partners and direct-to-consumer patients simultaneously.',
+    solution: 'We created a dual-voice brand system — professional and authoritative in B2B contexts, warm and encouraging in patient-facing communications. The visual identity uses a palette of deep teals and soft gradients that feel both medical and modern. We redesigned their mobile app experience and developed a web platform that saw a 65% increase in patient engagement within the first quarter.',
+    deliverables: ['Brand Strategy & Positioning', 'Mobile App Redesign', 'Web Platform Development', 'Content Strategy'],
+    testimonial: {
+      quote: 'They transformed our brand from a tech company that does health into a health company powered by technology. That shift changed everything.',
+      name: 'Marcus Chen',
+      title: 'Founder, Vireon Health',
+    },
+    website: 'https://vireonhealth.example.com',
+  },
+  {
+    slug: 'aura',
+    name: 'AURA',
+    category: 'Smart Watch / Wearables',
+    description: 'A next-generation wearable technology brand. We created a sleek, minimal identity that positions AURA as the intersection of fashion and function.',
+    longDescription: 'AURA was entering the saturated wearables market with a genuinely differentiated product — a smart watch that prioritized design aesthetics as much as technical capability. They needed a brand that could compete with both Apple and luxury watch houses, appealing to consumers who refuse to compromise style for technology.',
+    challenge: 'The wearables market is dominated by tech giants with massive marketing budgets. AURA needed to carve out a niche that neither pure tech brands nor traditional watchmakers occupied. The brand had to communicate sophistication, innovation, and desirability — all while building trust as a newcomer in a market where reliability is paramount.',
+    solution: 'We positioned AURA at the intersection of haute horology and Silicon Valley — a new category we branded "intelligent luxury." The visual identity uses stark contrasts, architectural photography, and a type system that feels both editorial and technical. We developed a web experience with immersive 3D product visualization and a social media strategy that generated 100K+ pre-launch signups.',
+    deliverables: ['Brand Positioning & Strategy', 'Visual Identity System', 'E-commerce Website', 'Social Media Campaign', 'Product Photography Direction'],
+    testimonial: {
+      quote: 'Chart+Foster gave AURA the brand gravity it needed to compete with the biggest names in tech. Our pre-launch numbers speak for themselves.',
+      name: 'Amara Okafor',
+      title: 'CMO, AURA Wearables',
+    },
+    website: 'https://aura-watch.example.com',
+  },
+  {
+    slug: 'lumora',
+    name: 'Lumora',
+    category: 'Sustainable Skincare & Wellness',
+    description: 'A sustainable skincare brand rooted in science and nature. We developed a brand that communicates purity, efficacy, and environmental responsibility.',
+    longDescription: 'Lumora was born from a dermatologist\'s frustration with the skincare industry — products that were either effective but harmful to the environment, or eco-friendly but ineffective. Their formulations bridged this gap, and they needed a brand that could tell that story with clarity and conviction in a market flooded with greenwashing.',
+    challenge: 'Sustainability in beauty has become a buzzword — every brand claims to be "clean" and "green." Lumora needed to cut through the noise and establish genuine credibility. The challenge was creating a premium positioning that justified a higher price point while communicating authentic environmental commitment without falling into the clichéd aesthetics of eco-brands.',
+    solution: 'We developed the concept of "scientific naturalism" — a brand voice and visual language that leads with clinical efficacy backed by environmental integrity. The identity uses a refined palette of botanical greens and clean whites, with transparent packaging design that literally shows the product\'s purity. We built a content strategy centered on ingredient transparency and created an e-commerce experience that educates while it sells, resulting in a 45% higher average order value than industry benchmarks.',
+    deliverables: ['Brand Strategy & Visual Identity', 'Packaging Design System', 'Shopify E-commerce Website', 'Content Strategy & Copywriting'],
+    testimonial: {
+      quote: 'They didn\'t just make us look good — they helped us articulate why we exist. Our customers connect with Lumora on a deeper level now.',
+      name: 'Elena Vasquez',
+      title: 'VP Brand, Lumora Skincare',
+    },
+    website: 'https://lumora.example.com',
+  },
+];
+
+export const blogPosts = [
+  {
+    slug: 'future-of-ai-branding',
+    title: 'The Future of AI in Brand Strategy',
+    category: 'AI',
+    readTime: '5 min read',
+    excerpt: 'How artificial intelligence is reshaping the way brands connect with audiences — and what it means for your business strategy in the coming decade.',
+    content: 'Artificial intelligence is no longer a futuristic concept — it\'s actively transforming how brands understand, reach, and engage their audiences. From predictive analytics to generative design tools, AI is enabling brand strategists to make faster, more informed decisions while maintaining the creative intuition that makes great brands resonate on an emotional level.',
+  },
+  {
+    slug: 'brand-inspiration-2025',
+    title: '10 Brands That Redefined Their Industry in 2025',
+    category: 'Inspiration',
+    readTime: '6 min read',
+    excerpt: 'From challenger startups to legacy reinventions, these ten brands proved that bold strategy and flawless execution can reshape entire markets.',
+    content: 'Every year, a handful of brands break through the noise and fundamentally change how their industry operates. In 2025, we\'ve seen an exceptional crop of reinventions — brands that didn\'t just iterate, but completely reimagined what\'s possible.',
+  },
+  {
+    slug: 'design-tools-2025',
+    title: 'Essential Design Tools Every Brand Team Needs',
+    category: 'Design Tools',
+    readTime: '6 min read',
+    excerpt: 'Our curated toolkit for modern brand teams — from design systems to prototyping platforms that streamline creative workflow.',
+    content: 'The right tools don\'t just make design faster — they make it better. We\'ve compiled the essential toolkit that our team uses every day to deliver world-class brand experiences for our clients.',
+  },
+  {
+    slug: 'mobile-first-branding',
+    title: 'Why Mobile-First Branding Is No Longer Optional',
+    category: 'Mobile Apps',
+    readTime: '4 min read',
+    excerpt: 'With over 60% of brand interactions happening on mobile, your brand experience must be designed for the small screen first.',
+    content: 'The shift to mobile isn\'t coming — it\'s already here. Over 60% of all brand interactions now happen on mobile devices, yet many businesses still treat mobile as an afterthought in their brand strategy.',
+  },
+];
+
+export const teamMembers = [
+  { name: 'Mateo Laurent', role: 'Creative Director', initials: 'ML' },
+  { name: 'Talia Mensah', role: 'Brand Strategist', initials: 'TM' },
+  { name: 'Zayd Khan', role: 'Client Partnerships', initials: 'ZK' },
+  { name: 'Chloe Tanaka', role: 'Product Design', initials: 'CT' },
+  { name: 'Nina Caldwell', role: 'Growth & Innovation', initials: 'NC' },
+  { name: 'Isaac Moreno', role: 'Business Development', initials: 'IM' },
+  { name: 'Marina Fox', role: 'Digital Experience', initials: 'MF' },
+];
+
+export const awards = [
+  { name: 'Framer', count: 8 },
+  { name: 'Awwwards', count: 6 },
+  { name: 'Dribbble', count: 5 },
+  { name: 'CSSDA', count: 4 },
+  { name: 'Behance', count: 3 },
+  { name: 'FWA', count: 2 },
+];

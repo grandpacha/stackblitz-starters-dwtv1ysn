@@ -8,10 +8,57 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: '#0A0A0A',
+        surface: '#111111',
+        'surface-light': '#1A1A1A',
+        border: '#222222',
+        'border-light': '#333333',
+        muted: '#999999',
+        cream: '#F5F0EB',
+        gold: '#F4B223',
+        aqua: '#2DD4BF',
+        steel: '#6B7280',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace'],
+      },
+      fontSize: {
+        'display': ['clamp(2.5rem, 8vw, 8.25rem)', { lineHeight: '0.95', letterSpacing: '-0.045em', fontWeight: '800' }],
+        'h1': ['clamp(2.5rem, 6vw, 6rem)', { lineHeight: '1', letterSpacing: '-0.04em', fontWeight: '800' }],
+        'h2': ['clamp(2rem, 4.2vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.035em', fontWeight: '700' }],
+        'h3': ['clamp(1.375rem, 2.2vw, 2rem)', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'lead': ['clamp(1.25rem, 2.2vw, 1.875rem)', { lineHeight: '1.4', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'stat': ['clamp(3rem, 7vw, 6.5rem)', { lineHeight: '1', letterSpacing: '-0.04em', fontWeight: '800' }],
+      },
+      letterSpacing: {
+        label: '0.18em',
+      },
+      spacing: {
+        'section': 'clamp(3.75rem, 8vw, 8.75rem)',
+      },
+      maxWidth: {
+        'content': '1320px',
+      },
+      borderRadius: {
+        'card': '4px',
+        'btn': '9999px',
+      },
+      keyframes: {
+        'marquee': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'marquee': 'marquee 30s linear infinite',
+        'marquee-slow': 'marquee 45s linear infinite',
+        'fade-up': 'fade-up 0.6s ease forwards',
       },
     },
   },

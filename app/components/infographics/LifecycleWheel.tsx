@@ -133,6 +133,10 @@ export default function LifecycleWheel() {
               const right = Math.sin((deg * Math.PI) / 180) > 0.2;
               const left = Math.sin((deg * Math.PI) / 180) < -0.2;
               const anchor = right ? 'start' : left ? 'end' : 'middle';
+              const mid = anchor === 'middle';
+              const above = Math.cos((deg * Math.PI) / 180) > 0;
+              const nameY = mid ? (above ? y1 - 52 : y1 + 40) : ly - 4;
+              const subY = mid ? (above ? y1 - 24 : y1 + 68) : ly + 24;
               return (
                 <g key={w} style={{ opacity: k < 3 ? dim(k) : 0.6, transition: 'opacity 0.2s' }}>
                   <line x1={f1(x0)} y1={f1(y0)} x2={f1(x1)} y2={f1(y1)} stroke="#8a8a8a" strokeWidth="1.5" />
@@ -140,10 +144,10 @@ export default function LifecycleWheel() {
                   <circle cx={f1(x1)} cy={f1(y1)} r="4" fill="#8a8a8a" />
                   {p && (
                     <g className="hidden sm:block">
-                      <text x={f1(lx)} y={f1(ly - 4)} textAnchor={anchor} fill="#FFFFFF" fontSize="24" fontWeight="700" fontFamily="'JetBrains Mono', monospace">
+                      <text x={f1(lx)} y={f1(nameY)} textAnchor={anchor} fill="#FFFFFF" fontSize="24" fontWeight="700" fontFamily="'JetBrains Mono', monospace">
                         {p.short}
                       </text>
-                      <text x={f1(lx)} y={f1(ly + 24)} textAnchor={anchor} fill="#999999" fontSize="20" fontFamily="'JetBrains Mono', monospace">
+                      <text x={f1(lx)} y={f1(subY)} textAnchor={anchor} fill="#999999" fontSize="20" fontFamily="'JetBrains Mono', monospace">
                         {p.weeks} WKS · {p.share}%
                       </text>
                     </g>
